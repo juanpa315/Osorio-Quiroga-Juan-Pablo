@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style-baseform.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>page titles</title>
+   
+</head>
+<body>
+    <div class="form-container">
+        {% block title%}
+        <h1 class="form-title">form title</h1>
+         {% endblock title%}
+        
+        <div id="successMessage" class="success-message">
+            ¡Empleado registrado exitosamente!
+        </div>
+
+        <form id="employeeForm">
+            <div class="form-group">
+                {% block content%}
+                <label for="nombre" class="form-label">label_1</label>
+                <input 
+                    type="text" 
+                    id="nombre" 
+                    name="nombre" 
+                    class="form-input" 
+                    placeholder="Ingrese el label"
+                    required
+                >
+                <span class="form-icon">👤</span>
+            </div>
+
+            <div class="form-group">
+                <label for="cargo" class="form-label">label_2</label>
+                <select id="cargo" name="cargo" class="form-select" required>
+                    <option value="">Select</option>
+                    <option value="desarrollador">Desarrollador</option>
+                    <option value="diseñador">Diseñador</option>
+                    <option value="analista">Analista</option>
+                    <option value="gerente">Gerente</option>
+                    <option value="coordinador">Coordinador</option>
+                    <option value="tester">Tester QA</option>
+                    <option value="devops">DevOps Engineer</option>
+                    <option value="scrum-master">Scrum Master</option>
+                    <option value="otro">Otro</option>
+                </select>
+                <span class="form-icon">💼</span>
+            </div>
+
+            <div class="form-group">
+                <label for="proyecto" class="form-label">label_3</label>
+                <select id="proyecto" name="proyecto" class="form-select" required>
+                    <option value="">Select</option>
+                    <option value="proyecto-alpha">Proyecto Alpha</option>
+                    <option value="proyecto-beta">Proyecto Beta</option>
+                    <option value="proyecto-gamma">Proyecto Gamma</option>
+                    <option value="aplicacion-movil">Aplicación Móvil</option>
+                    <option value="sistema-web">Sistema Web</option>
+                    <option value="ecommerce">E-commerce</option>
+                    <option value="integraciones">Integraciones API</option>
+                    <option value="mantenimiento">Mantenimiento</option>
+                </select>
+                <span class="form-icon">📋</span>
+            </div>
+            {% endblock content%}
+            <button type="submit" class="submit-btn">
+                Insertar Registro
+            </button>
+        </form>
+    </div>
+    </body>
+</html>
