@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestión de Personal</title>
+</head>
+<body>
+    <header>
+        <h1>Sistema de Gestión de Personal</h1>
+        <h2>Consultora de Software</h2>
+    </header>
+
+    <main>
+        <div style="position: fixed; top: 10px; right: 10px; z-index: 1000;">
+            <a href="{% url 'logout' %}" style="background-color: #dc3545; color: white; padding: 8px 15px; text-decoration: none; border-radius: 4px; font-size: 14px;">
+                Cerrar Sesión
+            </a>
+        </div>
+        <section>
+            <h3>Módulos del Sistema</h3>
+            <p>Seleccione el módulo que desea gestionar:</p>
+            
+            <div>
+                <h4>Gestión de Personal</h4>
+                <a href="{% url 'employee' %}">
+                    <button type="button">Gestionar Empleados</button>
+                </a>
+                <p>Administre la información de los empleados de la consultora.</p>
+            </div>
+
+            <div>
+                <h4>Gestión de Clientes</h4>
+                <a href="{% url 'customer' %}">
+                    <button type="button">Gestionar Clientes</button>
+                </a>
+                <p>Administre la información de los clientes y sus contratos.</p>
+            </div>
+
+            <div>
+                <h4>Centros de Excelencia (COE)</h4>
+                <a href="{% url 'coe' %}">
+                    <button type="button">Gestionar COE</button>
+                </a>
+                <p>Administre los centros de excelencia y áreas de especialización.</p>
+            </div>
+
+            <div>
+                <h4>Posiciones de Trabajo</h4>
+                <a href="{% url 'job' %}">
+                    <button type="button">Gestionar Posiciones</button>
+                </a>
+                <p>Administre las posiciones disponibles y sus rangos salariales.</p>
+            </div>
+        </section>
+
+        <section>
+            <h3>Acerca del Sistema</h3>
+            <h4>Funcionalidad del Proyecto</h4>
+            <p>
+                Este sistema es una aplicación web desarrollada en Django que permite realizar 
+                operaciones CRUD (Crear, Leer, Actualizar, Eliminar) para la gestión integral 
+                del personal de una consultora de software.
+            </p>
+            
+            <h4>Características Principales:</h4>
+            <ul>
+                <li><strong>Gestión de Empleados:</strong> Registro completo de información personal, 
+                    salarios, fechas de ingreso, posiciones asignadas y asignación de clientes.</li>
+                <li><strong>Administración de Clientes:</strong> Control de contratos, fechas de inicio 
+                    y finalización de proyectos, y tipos de contratos.</li>
+                <li><strong>Centros de Excelencia (COE):</strong> Organización de las diferentes áreas 
+                    de especialización tecnológica de la consultora.</li>
+                <li><strong>Posiciones de Trabajo:</strong> Definición de roles disponibles con sus 
+                    respectivos rangos salariales (Junior, Middle, Senior).</li>
+            </ul>
+
+            <h4>Beneficios del Sistema:</h4>
+            <ul>
+                <li>Centralización de la información del personal</li>
+                <li>Control eficiente de asignaciones cliente-empleado</li>
+                <li>Gestión estructurada de roles y salarios</li>
+                <li>Seguimiento de contratos y proyectos</li>
+                <li>Organización por centros de excelencia tecnológica</li>
+            </ul>
+
+            <p>
+                El sistema facilita la toma de decisiones estratégicas en recursos humanos 
+                y mejora la eficiencia operativa de la consultora de software.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Sistema de Gestión de Personal - Consultora de Software</p>
+    </footer>
+</body>
+</html>

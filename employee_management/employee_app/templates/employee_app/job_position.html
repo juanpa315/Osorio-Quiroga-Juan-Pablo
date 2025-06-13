@@ -1,0 +1,79 @@
+{% extends 'employee_app/baseform.html'%}
+
+{% block title %}
+<h1 class="form-title">Registro de posiciones laborales</h1>
+{% endblock title %}
+    
+{% block content %}
+    <form id="jobForm" method="post" action={% if update %}{% url 'update' %}{% else %}{% url 'insert' %}{% endif %}>
+        {% csrf_token %}
+        <input type="hidden" name="form_id" value="jobForm">
+        {% if update %}
+            <input type="hidden" value="{{ update.position_id }}" id="position_id" name="position_id" required>
+        {% endif %}
+        <div>
+            <label for="position_name">Nombre de Posición:</label><br>
+            <input type="text" {% if update %}value="{{ update.position_name }}"{% endif %} id="position_name" name="position_name" required><br><br>
+        </div>
+
+        <div>
+            <label for="junior_salary">Salario Junior:</label><br>
+            <input type="number" {% if update %}value="{{ update.junior_salary }}"{% endif %} id="junior_salary" name="junior_salary" required><br><br>
+        </div>
+
+        <div>
+            <label for="middle_salary">Salario Middle:</label><br>
+            <input type="number" {% if update %}value="{{ update.middle_salary }}"{% endif %} id="middle_salary" name="middle_salary" required><br><br>
+        </div>
+
+        <div>
+            <label for="senior_salary">Salario Senior:</label><br>
+            <input type="number" {% if update %}value="{{ update.senior_salary }}"{% endif %} id="senior_salary" name="senior_salary" required><br><br>
+        </div>
+
+        <div>
+            <label for="coe">COE:</label><br>
+            <input type="text" {% if update %}value="{{ update.coe }}"{% endif %} id="coe" name="coe"><br><br>
+        </div>
+
+        <button type="submit" class="submit-btn">
+            Insertar Registro
+        </button>
+    </form>
+    {% endblock content %}
+{% block table %}
+<div class="col-12 container">
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre de Posición</th>
+                    <th>Salario Junior</th>
+                    <th>Salario Middle</th>
+                    <th>Salario Senior</th>
+                    <th>COE</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for data in db_data %}
+                <tr>
+                    <td>{{ data.position_id }}</td>
+                    <td>{{ data.position_name }}</td>
+                    <td>{{ data.junior_salary }}</td>
+                    <td>{{ data.middle_salary }}</td>
+                    <td>{{ data.senior_salary }}</td>
+                    <td>{{ data.coe }}</td>
+                    <td>
+                        <a href="{% url "update_form" data.position_id %}?form_id=jobForm" class="btn btn-primary btn-sm">Update</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+    {% endblock table %}
+
+
