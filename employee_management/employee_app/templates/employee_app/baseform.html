@@ -2,13 +2,18 @@
 <html lang="es">
 <head>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style-baseform.css' %}">
+    <link rel="stylesheet" href="{% static 'css/stylse-baseform.css' %}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>page titles</title>
    
 </head>
 <body>
+    <div style="position: fixed; top: 10px; right: 10px; z-index: 1000;">
+        <a href="{% url 'logout' %}" style="background-color: #dc3545; color: white; padding: 8px 15px; text-decoration: none; border-radius: 4px; font-size: 14px;">
+            Cerrar Sesión
+        </a>
+    </div>
     <div class="form-container">
         {% block title%}
         <h1 class="form-title">form title</h1>
@@ -18,9 +23,10 @@
             ¡Empleado registrado exitosamente!
         </div>
 
+        {% block content%}
         <form id="employeeForm">
+            
             <div class="form-group">
-                {% block content%}
                 <label for="nombre" class="form-label">label_1</label>
                 <input 
                     type="text" 
@@ -65,11 +71,28 @@
                 </select>
                 <span class="form-icon">📋</span>
             </div>
-            {% endblock content%}
+            
             <button type="submit" class="submit-btn">
                 Insertar Registro
             </button>
+            
         </form>
-    </div>
-    </body>
+        {% endblock content%}
+            </div>
+        <div style="position: fixed; top: 10px; right: 10px; z-index: 1000; display: flex; gap: 10px;">
+            <!-- Botón Home -->
+            <a href="{% url 'index' %}" style="background-color: #007bff; color: white; padding: 8px 15px; text-decoration: none; border-radius: 4px; font-size: 14px;">
+                Regresar al Home
+            </a>
+            <!-- Botón Cerrar Sesión -->
+            <a href="{% url 'logout' %}" style="background-color: #dc3545; color: white; padding: 8px 15px; text-decoration: none; border-radius: 4px; font-size: 14px;">
+                Cerrar Sesión
+            </a>
+        </div>
+        <br>
+
+        {% block table %}
+        {% endblock table %}
+
+</body>
 </html>

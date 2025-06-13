@@ -1,0 +1,58 @@
+{% extends 'employee_app/baseform.html'%}
+
+{% block title %}
+<h1 class="form-title">Registro de COE</h1>
+{% endblock title %}
+    
+{% block content %}
+    <form id="coeForm" method="post" action={% if update %}{% url 'update' %}{% else %}{% url 'insert' %}{% endif %}>
+        {% csrf_token %}
+        <input type="hidden" name="form_id" value="coeForm">
+        {% if update %}
+            <input type="hidden" value="{{ update.coe_id }}" id="coe_id" name="coe_id" required>
+        {% endif %}
+        <div>
+            <label for="name">Nombre:</label><br>
+            <input type="text" {% if update %}value="{{ update.name }}"{% endif %} id="name" name="name" required><br><br>
+        </div>
+
+        <div>
+            <label for="description">Descripcion</label><br>
+            <input type="text" {% if update %}value="{{ update.description }}"{% endif %} id="description" name="description"><br><br>
+        </div>
+
+        <button type="submit" class="submit-btn">
+            Insertar Registro
+        </button>
+    </form>
+    {% endblock content %}
+{% block table %}
+<div class="col-12 container">
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for data in db_data %}
+                <tr>
+                    <td>{{ data.coe_id }}</td>
+                    <td>{{ data.name }}</td>
+                    <td>{{ data.description }}</td>
+                    <td>
+                        <a href="{% url "update_form" data.coe_id %}?form_id=coeForm" class="btn btn-primary btn-sm">Update</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+    {% endblock table %}
+
+
